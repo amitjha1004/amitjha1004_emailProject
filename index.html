@@ -7,6 +7,46 @@ SUBSCRIBE TO OUR NEWSLETTER
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"> 
+
+
+ function Get(){
+
+ 	var URL='https://2290nk8a3h.execute-api.ap-south-1.amazonaws.com/prod/entries'
+
+  var EmailId=$("#email").val();
+
+ 	$.ajax({
+
+       	  type: 'GET',
+       	  url: URL,
+       	  dataType :"json",
+       	  
+       	  data: { 
+    			 
+    			Email_id: EmailId
+    			
+  				},
+
+       	  success:function(data){
+       	  			
+                    	console.log('success',data);
+                      //data.Count;
+                    	alert("Subscribed " + data.Count + " times");
+                        //alert("ScannedCount is " + data.ScannedCount);
+
+                  },
+
+
+          error:function(result)
+                  {
+                  alert('ERROR');
+                 }
+       	  
+       });
+
+  return false; 
+     
+}
  
 	function display(){
 
@@ -18,6 +58,7 @@ SUBSCRIBE TO OUR NEWSLETTER
 	var dotposition=x.lastIndexOf(".");  
 	if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
   alert("Not a valid e-mail address");
+  return;
 }
   else
   {
@@ -28,21 +69,64 @@ SUBSCRIBE TO OUR NEWSLETTER
        	  data : JSON.stringify({"Email_id":$('#email').val()}),
        	  contentType :"application/json",
 
-       	  success:function(data){
-                    alert('Subscribed...!!');
-                    location.reload();
+       	  //success:function(data){
+               //     alert('Subscribed...!!');
+           //         location.reload();
+           //       },
+          //error:function(result)
+           //     {
+           //     alert('error');
+            //    }
+       	  
+       });
+
+  	}  
+
+  //setTimeout(function() {}, 10000);
+
+
+  var URL='https://2290nk8a3h.execute-api.ap-south-1.amazonaws.com/prod/entries'
+
+  var EmailId=$("#email").val();
+
+  $.ajax({
+
+          type: 'GET',
+          url: URL,
+          dataType :"json",
+          
+          data: { 
+           
+          Email_id: EmailId
+          
+          },
+
+          success:function(data){
+                
+                      console.log('success',data);
+                      //data.Count;
+                      alert("Subscribed " + data.Count + " times");
+                        //alert("ScannedCount is " + data.ScannedCount);
+
                   },
+
+
           error:function(result)
                   {
-                  alert('error');
+                  alert('ERROR');
                  }
-       	  
+          
        });
 
   return false; 
 
-  	}  
+
+
  } 
+
+
+
+  
 	
 </script>
  
@@ -80,10 +164,12 @@ SUBSCRIBE TO OUR NEWSLETTER
 
  
 </div>
-<div id="rahul">
+<div id="amit">
 <input type="button" value="SUBMIT" id="button" onclick="display()">
 
 </div>
+
+
 <div id="last">
 	
 
